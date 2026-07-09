@@ -1,0 +1,9 @@
+import '../batch_art_generator_screen/widgets/batch_art_item_widget.dart';import 'controller/batch_art_generator_controller.dart';import 'models/batch_art_item_model.dart';import 'package:ai_image_generator/core/app_export.dart';import 'package:ai_image_generator/widgets/app_bar/appbar_button_12.dart';import 'package:ai_image_generator/widgets/app_bar/custom_app_bar.dart';import 'package:flutter/material.dart';class BatchArtGeneratorScreen extends GetWidget<BatchArtGeneratorController> {const BatchArtGeneratorScreen({Key? key}) : super(key: key);
+
+@override Widget build(BuildContext context) { mediaQueryData = MediaQuery.of(context); return SafeArea(child: Scaffold(body: SizedBox(width: double.maxFinite, child: Column(children: [Container(padding: EdgeInsets.symmetric(vertical: 17.v), decoration: AppDecoration.outlineGray, child: Column(mainAxisSize: MainAxisSize.min, children: [SizedBox(height: 6.v), CustomAppBar(title: AppbarButton12(margin: EdgeInsets.only(left: 20.h), onTap: () {onTapBatchart();}))])), Expanded(child: Padding(padding: EdgeInsets.only(left: 20.h, top: 24.v, right: 20.h), child: Obx(() => GridView.builder(shrinkWrap: true, gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(mainAxisExtent: 178.v, crossAxisCount: 2, mainAxisSpacing: 20.h, crossAxisSpacing: 20.h), physics: BouncingScrollPhysics(), itemCount: controller.batchArtGeneratorModelObj.value.batchArtItemList.value.length, itemBuilder: (context, index) {BatchArtItemModel model = controller.batchArtGeneratorModelObj.value.batchArtItemList.value[index]; return BatchArtItemWidget(model);}))))])))); } 
+/// Navigates to the batchArtGeneratorOneScreen when the action is triggered.
+
+/// When the action is triggered, this function uses the [Get] package to
+/// push the named route for the batchArtGeneratorOneScreen.
+onTapBatchart() { Get.toNamed(AppRoutes.batchArtGeneratorOneScreen, ); } 
+ }
