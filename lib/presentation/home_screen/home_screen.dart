@@ -11,9 +11,6 @@ import '../../widgets/custom_text_form_field.dart';
 import '../art_styles_screen/controller/art_styles_controller.dart';
 import '../art_styles_screen/models/artstyle_item_model.dart';
 import '../art_styles_screen/widgets/artstyle_item_widget.dart';
-import '../explore_prompt_photo_detail_popup_screen/explore_prompt_photo_detail_popup_screen.dart';
-import '../explore_prompt_screen/controller/explore_prompt_controller.dart';
-import '../explore_prompt_screen/widgets/explore_prompt_item_widget.dart';
 import '../home_screen/widgets/listview1_item_widget.dart';
 import '../input_images/controller/input_images_screen_controller.dart';
 import '../input_images/model/input_image_model.dart';
@@ -256,7 +253,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             padding: EdgeInsets.symmetric(horizontal: 10.h),
                             scrollDirection: Axis.horizontal,
                             itemCount: inputImagesController
-                                .uplodedimage!
+                                .uplodedimage
                                 .length+1,
                             itemBuilder: (context, index) {
                               return Padding(
@@ -265,7 +262,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   onTap: ()async {
 
                                     XFile? file = await picker.pickImage(source: ImageSource.gallery);
-                                    inputImagesController.uplodedimage!.add(InputImageModel(file!.path));
+                                    inputImagesController.uplodedimage.add(InputImageModel(file!.path));
                                     inputImagesController.update();
                                   },
                                   child: Container(
@@ -306,7 +303,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
                                           image: FileImage(File(
-                                              inputImagesController.uplodedimage![index - 1].image!)),
+                                              inputImagesController.uplodedimage[index - 1].image!)),
                                           fit: BoxFit.fill),
                                       borderRadius:
                                       BorderRadius.circular(

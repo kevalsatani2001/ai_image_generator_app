@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:ai_image_generator/core/app_export.dart';
 import 'package:ai_image_generator/presentation/splash_screen_seven_screen/models/splash_screen_seven_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 /// A controller class for the SplashScreenSevenScreen.
 ///
@@ -18,20 +19,18 @@ class SplashScreenSevenController extends GetxController {
     });
   }
 
-
   _getIsFirst() async {
-    bool isSignIn = await PrefUtils.getIsSignIn();
     bool isIntro = await PrefUtils.getIsIntro();
+    User? currentUser = FirebaseAuth.instance.currentUser;
     Timer(const Duration(seconds: 3), () {
       print("is intro ====== $isIntro");
-      print("isSignIn ====== $isSignIn");
+      print("currentUser ====== ${currentUser?.uid}");
       if (isIntro) {
         Get.toNamed(AppRoutes.onboardingOneScreen);
-      } else if (isSignIn) {
-        Get.toNamed(AppRoutes.loginScreen);
-      } else {
+      } else if (currentUser != null) {
         Get.toNamed(AppRoutes.homeScreenOneContainerScreen);
-
+      } else {
+        Get.toNamed(AppRoutes.loginScreen);
       }
     });
   }

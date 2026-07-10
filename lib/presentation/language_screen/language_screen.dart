@@ -1,8 +1,4 @@
 import 'package:ai_image_generator/core/app_export.dart';
-import 'package:ai_image_generator/widgets/app_bar/appbar_button_3.dart';
-import 'package:ai_image_generator/widgets/app_bar/custom_app_bar.dart';
-import 'package:ai_image_generator/widgets/custom_checkbox_button.dart';
-import 'package:ai_image_generator/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'controller/language_controller.dart';
 import 'models/language_model.dart';

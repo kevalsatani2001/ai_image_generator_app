@@ -3,7 +3,6 @@ import 'package:ai_image_generator/widgets/custom_search_view.dart';
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import '../art_styles_screen/models/artstyle_item_model.dart';
-import '../explore_prompt_photo_detail_popup_screen/explore_prompt_photo_detail_popup_screen.dart';
 import '../explore_prompt_screen/widgets/explore_prompt_item_widget.dart';
 import 'controller/explore_prompt_controller.dart';
 

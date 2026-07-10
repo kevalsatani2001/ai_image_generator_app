@@ -1,6 +1,5 @@
 import 'package:ai_image_generator/core/app_export.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../model/input_image_data.dart';
 import '../model/input_image_model.dart';

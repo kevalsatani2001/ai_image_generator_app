@@ -1,4 +1,3 @@
-import '../../../core/app_export.dart';
 import 'subscriptionpla_item_model.dart';
 
 /// This class defines the variables used in the [choose_your_plan_screen],

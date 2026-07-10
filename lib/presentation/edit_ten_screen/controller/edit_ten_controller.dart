@@ -1,7 +1,6 @@
 import 'dart:ui' as ui;
 
 import 'package:ai_image_generator/core/app_export.dart';
-import 'package:ai_image_generator/presentation/edit_ten_screen/models/edit_ten_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';

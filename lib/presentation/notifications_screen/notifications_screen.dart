@@ -1,6 +1,4 @@
 import 'package:ai_image_generator/core/app_export.dart';
-import 'package:ai_image_generator/widgets/app_bar/appbar_button_8.dart';
-import 'package:ai_image_generator/widgets/app_bar/custom_app_bar.dart';
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import '../notifications_screen/widgets/usernotificatio_item_widget.dart';

@@ -1,13 +1,10 @@
 import 'package:ai_image_generator/core/app_export.dart';
-import 'package:ai_image_generator/widgets/app_bar/appbar_button_7.dart';
-import 'package:ai_image_generator/widgets/app_bar/custom_app_bar.dart';
 import 'package:ai_image_generator/widgets/custom_elevated_button.dart';
 import 'package:ai_image_generator/widgets/custom_outlined_button.dart';
 import 'package:ai_image_generator/widgets/custom_text_form_field.dart';
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import '../edit_ten_screen/controller/edit_ten_controller.dart';
-import '../successful_screen/successful_screen.dart';
 import 'controller/finalize_five_controller.dart';
 
 

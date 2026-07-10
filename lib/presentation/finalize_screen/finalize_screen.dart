@@ -1,16 +1,15 @@
 import 'package:ai_image_generator/core/app_export.dart';
 import 'package:ai_image_generator/core/utils/validation_functions.dart';
-import 'package:ai_image_generator/presentation/successful_screen/successful_screen.dart';
 import 'package:ai_image_generator/widgets/custom_elevated_button.dart';
 import 'package:ai_image_generator/widgets/custom_outlined_button.dart';
 import 'package:ai_image_generator/widgets/custom_switch.dart';
 import 'package:ai_image_generator/widgets/custom_text_form_field.dart';
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../art_styles_screen/controller/art_styles_controller.dart';
 import '../edit_artwork_screen/controller/edit_artwork_controller.dart';
-import '../edit_artwork_screen/edit_artwork_screen.dart';
 import 'controller/finalize_controller.dart';
 
 
@@ -301,28 +300,50 @@ class _FinalizeScreenState extends State<FinalizeScreen> {
                     ]))),
           ),
         ),
-        bottomNavigationBar: Container(
+        bottomNavigationBar: Obx(() => Container(
             margin: EdgeInsets.only(left: 20.h, right: 20.h, bottom: 24.v),
             decoration: AppDecoration.white,
-            child: Container(
-                decoration: AppDecoration.white,
-                child: Row(
+            child: controller.isLoading.value
+                ? SizedBox(
+                    height: 50.v,
+                    child: Center(
+                      child: CircularProgressIndicator(color: theme.colorScheme.primary),
+                    ),
+                  )
+                : Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                      Expanded(
-                         child: CustomOutlinedButton(
-                             text: "lbl_share".tr,
-                             margin: EdgeInsets.only(right: 10.h),
-                             onTap: () {
-                              // onTapShare();
-                             })),
+                          child: CustomOutlinedButton(
+                              text: "lbl_share".tr,
+                              margin: EdgeInsets.only(right: 10.h),
+                              onTap: () async {
+                                final editCtrl = Get.find<EditArtworkController>();
+                                if (editCtrl.bdata != null) {
+                                  bool success = await controller.publishPost(
+                                    imageBytes: editCtrl.bdata!,
+                                    prompt: "A beautiful AI creation",
+                                    negativePrompt: "lowres, bad anatomy",
+                                    style: "Fantasy Art",
+                                    cfgScale: 9.0,
+                                    seed: controller.seedvalueoneController.text.isNotEmpty 
+                                        ? controller.seedvalueoneController.text 
+                                        : "123654789654",
+                                  );
+                                  if (success) {
+                                    Get.offAllNamed(AppRoutes.homeScreenOneContainerScreen);
+                                  }
+                                } else {
+                                  Fluttertoast.showToast(msg: "Image data not ready yet.");
+                                }
+                              })),
                      Expanded(
-                         child: CustomElevatedButton(
-                           onTap: (){
-                             getDownloadDialogue(context,(){});
-                           },
-                             text: "lbl_download2".tr,
-                             margin: EdgeInsets.only(left: 10.h)))
+                          child: CustomElevatedButton(
+                            onTap: (){
+                              getDownloadDialogue(context,(){});
+                            },
+                              text: "lbl_download2".tr,
+                              margin: EdgeInsets.only(left: 10.h)))
                     ])))),
   );
  }

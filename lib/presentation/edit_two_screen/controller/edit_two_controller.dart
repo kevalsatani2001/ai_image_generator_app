@@ -2,7 +2,6 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 
 import 'package:ai_image_generator/core/app_export.dart';
-import 'package:ai_image_generator/presentation/edit_two_screen/models/edit_two_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 

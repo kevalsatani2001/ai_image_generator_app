@@ -1,6 +1,5 @@
 import '../../discover_artwork_page/models/discover1_item_model.dart';
 import '../controller/profile_liked_controller.dart';
-import '../models/profile_liked_item_model.dart';
 import 'package:ai_image_generator/core/app_export.dart';
 import 'package:flutter/material.dart';
 

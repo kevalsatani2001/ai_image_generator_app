@@ -1,6 +1,5 @@
 import 'package:ai_image_generator/core/app_export.dart';
 import 'package:ai_image_generator/presentation/language_screen/models/language_model.dart';
-import 'package:flutter/material.dart';
 
 import '../models/language_data.dart';
 

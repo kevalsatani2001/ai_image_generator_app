@@ -2,6 +2,7 @@ import 'package:ai_image_generator/core/app_export.dart';
 import 'package:ai_image_generator/widgets/custom_elevated_button.dart';
 import 'package:ai_image_generator/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../widgets/custom_bottom_bar.dart';
 import 'controller/log_out_popup_controller.dart';
@@ -48,8 +49,9 @@ class LogOutPopupScreen extends GetWidget<LogOutPopupController> {
                               })),
                       Expanded(
                           child: CustomElevatedButton(
-                              onTap: (){
-                                PrefUtils.setIsSignIn(true);
+                              onTap: () async {
+                                await FirebaseAuth.instance.signOut();
+                                await PrefUtils.setIsSignIn(true);
                                 Get.offAllNamed(AppRoutes.loginScreen);
                                 controller.getIndex(0);
                               },

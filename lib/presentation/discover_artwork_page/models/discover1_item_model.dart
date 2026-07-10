@@ -3,6 +3,8 @@
 
 class Discover1ItemModel {
   String? image;
+  String? url;
   int? id;
-  Discover1ItemModel(this.image,this.id);
+  String? docId;
+  Discover1ItemModel(this.image,this.id, {this.url, this.docId});
 }

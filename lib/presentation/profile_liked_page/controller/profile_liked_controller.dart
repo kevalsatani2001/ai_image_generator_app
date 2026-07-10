@@ -1,5 +1,4 @@
 import 'package:ai_image_generator/core/app_export.dart';
-import 'package:ai_image_generator/presentation/profile_liked_page/models/profile_liked_model.dart';
 
 import '../../discover_artwork_page/models/discover1_item_model.dart';
 import '../../discover_artwork_page/models/discover_artwork_model.dart';

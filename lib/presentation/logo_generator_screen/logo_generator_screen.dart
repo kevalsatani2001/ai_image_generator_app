@@ -1,10 +1,5 @@
 import 'package:ai_image_generator/core/app_export.dart';
-import 'package:ai_image_generator/widgets/app_bar/appbar_image_1.dart';
-import 'package:ai_image_generator/widgets/app_bar/appbar_title.dart';
-import 'package:ai_image_generator/widgets/app_bar/custom_app_bar.dart';
-import 'package:ai_image_generator/widgets/custom_checkbox_button.dart';
 import 'package:ai_image_generator/widgets/custom_elevated_button.dart';
-import 'package:ai_image_generator/widgets/custom_pin_code_text_field.dart';
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 

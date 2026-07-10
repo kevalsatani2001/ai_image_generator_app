@@ -30,7 +30,7 @@ class PrefUtils {
 
   String getThemeData() {
     try {
-      return _sharedPreferences!.getString('themeData')!;
+      return _sharedPreferences?.getString('themeData') ?? 'primary';
     } catch (e) {
       return 'primary';
     }

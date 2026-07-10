@@ -122,44 +122,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
                              contentPadding: EdgeInsets.only(
                                  left: 16.h, top: 17.v, bottom: 17.v))),
                          SizedBox(height: 40.v),
-                         CustomElevatedButton(
-                             text: "lbl_signup2".tr,
-                             onTap: () {
-                              if(_formKey.currentState!.validate()){
-
-
-                              onTapSignup();}
-                             }),
-                         Spacer(),
-                         SizedBox(height: 8.v),
-                         Align(
-                             alignment: Alignment.center,
-                             child: GestureDetector(
-                                 onTap: () {
-                                  onTapTxtAlreadyhavean();
-                                 },
-                                 child: RichText(
-                                     text: TextSpan(children: [
-                                      TextSpan(
-                                          text: "msg_already_have_an2".tr,
-                                          style: theme.textTheme.bodyLarge),
-                                      TextSpan(
-                                          text: "lbl_login".tr,
-                                          style: CustomTextStyles
-                                              .titleMediumPrimary)
-                                     ]),
-                                     textAlign: TextAlign.left)))
+                          Obx(() => controller.isLoading.value
+                              ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
+                              : CustomElevatedButton(
+                                  text: "lbl_signup2".tr,
+                                  onTap: () async {
+                                    if(_formKey.currentState!.validate()){
+                                      bool success = await controller.register();
+                                      if (success) {
+                                        onTapSignup();
+                                      }
+                                    }
+                                  })),
+                          Spacer(),
+                          SizedBox(height: 8.v),
+                          Align(
+                              alignment: Alignment.center,
+                              child: GestureDetector(
+                                  onTap: () {
+                                   onTapTxtAlreadyhavean();
+                                  },
+                                  child: RichText(
+                                      text: TextSpan(children: [
+                                       TextSpan(
+                                           text: "msg_already_have_an2".tr,
+                                           style: theme.textTheme.bodyLarge),
+                                       TextSpan(
+                                           text: "lbl_login".tr,
+                                           style: CustomTextStyles
+                                               .titleMediumPrimary)
+                                      ]),
+                                      textAlign: TextAlign.left)))
                         ]))))),
   );
  }
 
 
- onTapSignup() {Get.back();
+ onTapSignup() {
+   Get.offAllNamed(AppRoutes.homeScreenOneContainerScreen);
  }
 
  onTapTxtAlreadyhavean() {
- Get.back();
+   Get.back();
  }
 }
-
-

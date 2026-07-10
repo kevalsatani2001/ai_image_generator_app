@@ -66,7 +66,7 @@ class _InputImagesScreenState extends State<InputImagesScreen> {
                                               crossAxisSpacing: 20.h),
                                           physics: BouncingScrollPhysics(),
                                           itemCount: controller
-                                              .uplodedimage!
+                                              .uplodedimage
                                               .length+1,
                                           itemBuilder: (context, index) {
                                             // InputImageModel model = controller
@@ -75,7 +75,7 @@ class _InputImagesScreenState extends State<InputImagesScreen> {
                                               onTap: ()async {
 
                                                 XFile? file = await picker.pickImage(source: ImageSource.gallery);
-                                                controller.uplodedimage!.add(InputImageModel(file!.path));
+                                                controller.uplodedimage.add(InputImageModel(file!.path));
                                                 controller.update();
                                               },
                                               child: Container(
@@ -112,7 +112,7 @@ class _InputImagesScreenState extends State<InputImagesScreen> {
                                               decoration: BoxDecoration(
                                                   image: DecorationImage(
                                                       image: FileImage(File(
-                                                          controller.uplodedimage![index - 1].image!)),
+                                                          controller.uplodedimage[index - 1].image!)),
                                                       fit: BoxFit.fill),
                                                   borderRadius:
                                                   BorderRadius.circular(

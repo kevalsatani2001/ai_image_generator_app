@@ -1,7 +1,4 @@
 import 'package:ai_image_generator/core/app_export.dart';
-import 'package:ai_image_generator/widgets/app_bar/appbar_image_1.dart';
-import 'package:ai_image_generator/widgets/app_bar/appbar_title.dart';
-import 'package:ai_image_generator/widgets/app_bar/custom_app_bar.dart';
 import 'package:ai_image_generator/widgets/custom_elevated_button.dart';
 import 'package:ai_image_generator/widgets/custom_outlined_button.dart';
 import 'package:ai_image_generator/widgets/custom_text_form_field.dart';

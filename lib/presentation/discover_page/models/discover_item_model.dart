@@ -8,5 +8,6 @@ class DiscoverItemModel {
  String? subTitle;
  bool? isFollow;
  int? id;
- DiscoverItemModel(this.image,this.title,this.subTitle,this.isFollow,this.id);
+ String? uid;
+ DiscoverItemModel(this.image,this.title,this.subTitle,this.isFollow,this.id, {this.uid});
 }

@@ -35,100 +35,118 @@ List tabs = [ ProfilePage(),
          ])),
      SizedBox(height: 16.v),
      Expanded(
-         child: SingleChildScrollView(
-             child: Column(
-                 crossAxisAlignment: CrossAxisAlignment.start,
-                 children: [
-              Center(
-                child: CustomImageView(
-                    imagePath: ImageConstant.imgEllipse237104x104,
-                    height: 104.adaptSize,
-                    width: 104.adaptSize,
-                    radius: BorderRadius.circular(52.h)),
-              ),
-              SizedBox(height: 20.v),
-              Center(
-                child: Text("lbl_aida_bugg".tr,
-                    style: theme.textTheme.titleMedium),
-              ),
-              SizedBox(height: 3.v),
-              Center(
-                child: Text("lbl_aida_bugg2".tr,
-                    style: CustomTextStyles.bodyLargeGray700),
-              ),
-              Padding(
-                  padding:
-                  EdgeInsets.only(left: 20.h, top: 15.v, right: 20.h),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                       Container(
-                           padding: EdgeInsets.symmetric(
-                               horizontal: 26.h, vertical: 17.v),
-                           decoration: AppDecoration.fillGray10002
-                               .copyWith(
-                               borderRadius:
-                               BorderRadiusStyle.roundedBorder8),
-                           child: Column(
-                               mainAxisSize: MainAxisSize.min,
-                               children: [
-                                Text("lbl_674".tr,
-                                    style: CustomTextStyles
-                                        .titleMedium16_1),
-                                SizedBox(height: 9.v),
-                                Text("lbl_artwork".tr,
-                                    style: theme.textTheme.bodyLarge)
-                               ])),
-                       GestureDetector(
-                           onTap: () {
-                          Get.toNamed(AppRoutes.followerTabContainerScreen);
-                           },
-                           child: Container(
-                               margin: EdgeInsets.only(left: 16.h),
+         child: GetBuilder<ProfileTabContainerController>(
+           init: controller,
+           builder: (controller) {
+             if (controller.isLoading) {
+               return Center(child: CircularProgressIndicator(color: theme.colorScheme.primary));
+             }
+
+             String displayName = "${controller.firstName} ${controller.lastName}".trim();
+             if (displayName.isEmpty) displayName = "User Profile";
+             String username = controller.firstName.isNotEmpty 
+                 ? "@${controller.firstName.toLowerCase()}" 
+                 : "@username";
+
+             return SingleChildScrollView(
+                 child: Column(
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                     children: [
+                  Center(
+                    child: CustomImageView(
+                        imagePath: controller.profileImage.isEmpty || controller.profileImage.startsWith('assets/')
+                            ? ImageConstant.imgEllipse237104x104
+                            : null,
+                        url: controller.profileImage.isNotEmpty && !controller.profileImage.startsWith('assets/')
+                            ? controller.profileImage
+                            : null,
+                        height: 104.adaptSize,
+                        width: 104.adaptSize,
+                        radius: BorderRadius.circular(52.h)),
+                  ),
+                  SizedBox(height: 20.v),
+                  Center(
+                    child: Text(displayName,
+                        style: theme.textTheme.titleMedium),
+                  ),
+                  SizedBox(height: 3.v),
+                  Center(
+                    child: Text(username,
+                        style: CustomTextStyles.bodyLargeGray700),
+                  ),
+                  Padding(
+                      padding:
+                      EdgeInsets.only(left: 20.h, top: 15.v, right: 20.h),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                           Container(
                                padding: EdgeInsets.symmetric(
-                                   horizontal: 20.h, vertical: 17.v),
+                                   horizontal: 26.h, vertical: 17.v),
                                decoration: AppDecoration.fillGray10002
                                    .copyWith(
-                                   borderRadius: BorderRadiusStyle
-                                       .roundedBorder8),
+                                   borderRadius:
+                                   BorderRadiusStyle.roundedBorder8),
                                child: Column(
                                    mainAxisSize: MainAxisSize.min,
                                    children: [
-                                    Text("lbl_254_k".tr,
+                                    Text(controller.postsCount.toString(),
                                         style: CustomTextStyles
                                             .titleMedium16_1),
                                     SizedBox(height: 9.v),
-                                    Text("lbl_followers".tr,
-                                        style:
-                                        theme.textTheme.bodyLarge)
-                                   ]))),
-                       GestureDetector(
-                           onTap: () {
-                             Get.toNamed(AppRoutes.followerTabContainerScreen);
-                           },
-                           child: Container(
-                               margin: EdgeInsets.only(left: 16.h),
-                               padding: EdgeInsets.symmetric(
-                                   horizontal: 21.h, vertical: 15.v),
-                               decoration: AppDecoration.fillGray10002
-                                   .copyWith(
-                                   borderRadius: BorderRadiusStyle
-                                       .roundedBorder8),
-                               child: Column(
-                                   mainAxisSize: MainAxisSize.min,
-                                   mainAxisAlignment:
-                                   MainAxisAlignment.center,
-                                   children: [
-                                    SizedBox(height: 2.v),
-                                    Text("lbl_1258".tr,
-                                        style: CustomTextStyles
-                                            .titleMedium16_1),
-                                    SizedBox(height: 11.v),
-                                    Text("lbl_following".tr,
-                                        style:
-                                        theme.textTheme.bodyLarge)
-                                   ])))
-                      ])),
+                                    Text("lbl_artwork".tr,
+                                        style: theme.textTheme.bodyLarge)
+                                   ])),
+                           GestureDetector(
+                               onTap: () {
+                              Get.toNamed(AppRoutes.followerTabContainerScreen);
+                               },
+                               child: Container(
+                                   margin: EdgeInsets.only(left: 16.h),
+                                   padding: EdgeInsets.symmetric(
+                                       horizontal: 20.h, vertical: 17.v),
+                                   decoration: AppDecoration.fillGray10002
+                                       .copyWith(
+                                       borderRadius: BorderRadiusStyle
+                                           .roundedBorder8),
+                                   child: Column(
+                                       mainAxisSize: MainAxisSize.min,
+                                       children: [
+                                        Text(controller.followersCount.toString(),
+                                            style: CustomTextStyles
+                                                .titleMedium16_1),
+                                        SizedBox(height: 9.v),
+                                        Text("lbl_followers".tr,
+                                            style:
+                                            theme.textTheme.bodyLarge)
+                                       ]))),
+                           GestureDetector(
+                               onTap: () {
+                                 Get.toNamed(AppRoutes.followerTabContainerScreen);
+                               },
+                               child: Container(
+                                   margin: EdgeInsets.only(left: 16.h),
+                                   padding: EdgeInsets.symmetric(
+                                       horizontal: 21.h, vertical: 15.v),
+                                   decoration: AppDecoration.fillGray10002
+                                       .copyWith(
+                                       borderRadius: BorderRadiusStyle
+                                           .roundedBorder8),
+                                   child: Column(
+                                       mainAxisSize: MainAxisSize.min,
+                                       mainAxisAlignment:
+                                       MainAxisAlignment.center,
+                                       children: [
+                                        SizedBox(height: 2.v),
+                                        Text(controller.followingCount.toString(),
+                                            style: CustomTextStyles
+                                                .titleMedium16_1),
+                                        SizedBox(height: 11.v),
+                                        Text("lbl_following".tr,
+                                            style:
+                                            theme.textTheme.bodyLarge)
+                                       ])))
+                          ])),
               Padding(
                   padding:
                   EdgeInsets.only(left: 20.h, top: 16.v, right: 20.h),
@@ -208,8 +226,11 @@ List tabs = [ ProfilePage(),
                    return tabs[index];
                  },
                ),
-
-             ])))
+              ]),
+            );
+          },
+        ),
+      ),
     ]);
   }
 

@@ -1,10 +1,6 @@
 import 'package:ai_image_generator/core/app_export.dart';
 import 'package:ai_image_generator/presentation/profile_created_page/profile_created_page.dart';
 import 'package:ai_image_generator/presentation/profile_liked_page/profile_liked_page.dart';
-import 'package:ai_image_generator/presentation/profile_one_page/profile_one_page.dart';
-import 'package:ai_image_generator/widgets/app_bar/appbar_button_13.dart';
-import 'package:ai_image_generator/widgets/app_bar/custom_app_bar.dart';
-import 'package:ai_image_generator/widgets/custom_search_view.dart';
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
@@ -54,22 +50,46 @@ class _ProfileOneTabContainerScreenState
               Expanded(
                 child: ListView(
                   children: [
-                    Center(
-                      child: CustomImageView(
-                          imagePath: ImageConstant.imgEllipse237104x104,
-                          height: 104.adaptSize,
-                          width: 104.adaptSize,
-                          radius: BorderRadius.circular(52.h)),
-                    ),
-                    SizedBox(height: 20.v),
-                    Center(
-                      child: Text("lbl_aida_bugg".tr,
-                          style: theme.textTheme.titleMedium),
-                    ),
-                    SizedBox(height: 3.v),
-                    Center(
-                      child: Text("lbl_aida_bugg2".tr,
-                          style: CustomTextStyles.bodyLargeGray700),
+                    GetBuilder<ProfileOneTabContainerController>(
+                      init: controller,
+                      builder: (controller) {
+                        if (controller.isLoading) {
+                          return Center(child: CircularProgressIndicator(color: theme.colorScheme.primary));
+                        }
+
+                        String displayName = "${controller.firstName} ${controller.lastName}".trim();
+                        if (displayName.isEmpty) displayName = "User Profile";
+                        String username = controller.firstName.isNotEmpty 
+                            ? "@${controller.firstName.toLowerCase()}" 
+                            : "@username";
+
+                        return Column(
+                          children: [
+                            Center(
+                              child: CustomImageView(
+                                  imagePath: controller.profileImage.isEmpty || controller.profileImage.startsWith('assets/')
+                                      ? ImageConstant.imgEllipse237104x104
+                                      : null,
+                                  url: controller.profileImage.isNotEmpty && !controller.profileImage.startsWith('assets/')
+                                      ? controller.profileImage
+                                      : null,
+                                  height: 104.adaptSize,
+                                  width: 104.adaptSize,
+                                  radius: BorderRadius.circular(52.h)),
+                            ),
+                            SizedBox(height: 20.v),
+                            Center(
+                              child: Text(displayName,
+                                  style: theme.textTheme.titleMedium),
+                            ),
+                            SizedBox(height: 3.v),
+                            Center(
+                              child: Text(username,
+                                  style: CustomTextStyles.bodyLargeGray700),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                     Padding(
                         padding:
@@ -264,123 +284,6 @@ class _ProfileOneTabContainerScreenState
       ),
     );
 
-    SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: SizedBox(
-          width: double.maxFinite,
-          child: Column(
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 17.v),
-                decoration: AppDecoration.outlineGray,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SizedBox(height: 6.v),
-                    CustomAppBar(
-                      title: AppbarButton13(
-                        margin: EdgeInsets.only(left: 20.h),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: CustomSearchView(
-                      margin: EdgeInsets.only(
-                        left: 20.h,
-                        top: 16.v,
-                        right: 20.h,
-                      ),
-                      controller: controller.searchController,
-                      hintText: "lbl_search".tr,
-                      alignment: Alignment.center,
-                      prefix: Container(
-                        margin: EdgeInsets.fromLTRB(16.h, 12.v, 12.h, 12.v),
-                        child: CustomImageView(
-                          svgPath: ImageConstant.imgSearchBlack900,
-                        ),
-                      ),
-                      prefixConstraints: BoxConstraints(
-                        maxHeight: 48.v,
-                      ),
-                      suffix: Padding(
-                        padding: EdgeInsets.only(
-                          right: 15.h,
-                        ),
-                        child: IconButton(
-                          onPressed: () {
-                            controller.searchController.clear();
-                          },
-                          icon: Icon(
-                            Icons.clear,
-                            color: Colors.grey.shade600,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 30.v,
-                    width: 173.h,
-                    margin: EdgeInsets.only(
-                      left: 20.h,
-                      top: 25.v,
-                    ),
-                    child: TabBar(
-                      controller: controller.tabviewController,
-                      labelPadding: EdgeInsets.zero,
-                      labelColor: theme.colorScheme.primary,
-                      labelStyle: TextStyle(
-                        fontSize: 16.fSize,
-                        fontFamily: 'Open Sans',
-                        fontWeight: FontWeight.w700,
-                      ),
-                      unselectedLabelColor: appTheme.gray700,
-                      unselectedLabelStyle: TextStyle(
-                        fontSize: 16.fSize,
-                        fontFamily: 'Open Sans',
-                        fontWeight: FontWeight.w400,
-                      ),
-                      indicatorColor: theme.colorScheme.primary,
-                      tabs: [
-                        Tab(
-                          child: Text(
-                            "lbl_followers".tr,
-                          ),
-                        ),
-                        Tab(
-                          child: Text(
-                            "lbl_following".tr,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: SizedBox(
-                      height: 659.v,
-                      child: TabBarView(
-                        controller: controller.tabviewController,
-                        children: [
-                          ProfileOnePage(),
-                          ProfileOnePage(),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 
 

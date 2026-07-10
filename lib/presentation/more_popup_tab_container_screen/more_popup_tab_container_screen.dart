@@ -183,65 +183,64 @@ class MorePopupTabContainerScreen
                                                   ]))),
                                       Align(
                                           alignment: Alignment.topCenter,
-                                          child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                CustomImageView(
-                                                    imagePath: ImageConstant
-                                                        .imgEllipse237104x104,
-                                                    height: 104.adaptSize,
-                                                    width: 104.adaptSize,
-                                                    radius:
-                                                        BorderRadius.circular(
-                                                            52.h)),
-                                                SizedBox(height: 20.v),
-                                                Text("lbl_aida_bugg".tr,
-                                                    style: theme
-                                                        .textTheme.titleMedium),
-                                                SizedBox(height: 3.v),
-                                                Text("lbl_aida_bugg2".tr,
-                                                    style: CustomTextStyles
-                                                        .bodyLargeGray700),
-                                                SizedBox(height: 23.v),
-                                                Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Container(
-                                                          padding: EdgeInsets
-                                                              .symmetric(
-                                                                  horizontal:
-                                                                      133.h,
-                                                                  vertical:
-                                                                      9.v),
-                                                          decoration: AppDecoration
-                                                              .blue
-                                                              .copyWith(
+                                          child: GetBuilder<MorePopupTabContainerController>(
+                                            init: controller,
+                                            builder: (controller) {
+                                              if (controller.isLoading) {
+                                                return Center(
+                                                  child: CircularProgressIndicator(color: theme.colorScheme.primary),
+                                                );
+                                              }
+
+                                              String displayName = "${controller.firstName} ${controller.lastName}".trim();
+                                              if (displayName.isEmpty) displayName = "User Profile";
+                                              String username = controller.firstName.isNotEmpty 
+                                                  ? "@${controller.firstName.toLowerCase()}" 
+                                                  : "@username";
+
+                                              return Column(
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  children: [
+                                                    CustomImageView(
+                                                        imagePath: controller.profileImage.isEmpty || controller.profileImage.startsWith('assets/')
+                                                            ? ImageConstant.imgEllipse237104x104
+                                                            : null,
+                                                        url: controller.profileImage.isNotEmpty && !controller.profileImage.startsWith('assets/')
+                                                            ? controller.profileImage
+                                                            : null,
+                                                        height: 104.adaptSize,
+                                                        width: 104.adaptSize,
+                                                        radius: BorderRadius.circular(52.h)),
+                                                    SizedBox(height: 20.v),
+                                                    Text(displayName,
+                                                        style: theme.textTheme.titleMedium),
+                                                    SizedBox(height: 3.v),
+                                                    Text(username,
+                                                        style: CustomTextStyles.bodyLargeGray700),
+                                                    SizedBox(height: 23.v),
+                                                    Row(
+                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                        children: [
+                                                          Container(
+                                                              padding: EdgeInsets.symmetric(
+                                                                  horizontal: 133.h,
+                                                                  vertical: 9.v),
+                                                              decoration: AppDecoration.blue.copyWith(
                                                                   borderRadius:
-                                                                      BorderRadiusStyle
-                                                                          .roundedBorder8),
-                                                          child: Text(
-                                                              "lbl_follow".tr,
-                                                              style: CustomTextStyles
-                                                                  .titleMediumOnErrorContainerSemiBold)),
-                                                      CustomIconButton(
-                                                          height: 40.adaptSize,
-                                                          width: 40.adaptSize,
-                                                          margin:
-                                                              EdgeInsets.only(
-                                                                  left: 16.h),
-                                                          padding:
-                                                              EdgeInsets.all(
-                                                                  8.h),
-                                                          decoration:
-                                                              IconButtonStyleHelper
-                                                                  .fillGrayTL82,
-                                                          child: CustomImageView(
-                                                              svgPath: ImageConstant
-                                                                  .imgOverflowmenu))
-                                                    ])
-                                              ])),
+                                                                      BorderRadiusStyle.roundedBorder8),
+                                                              child: Text("lbl_follow".tr,
+                                                                  style: CustomTextStyles.titleMediumOnErrorContainerSemiBold)),
+                                                          CustomIconButton(
+                                                              height: 40.adaptSize,
+                                                              width: 40.adaptSize,
+                                                              margin: EdgeInsets.only(left: 16.h),
+                                                              padding: EdgeInsets.all(8.h),
+                                                              decoration: IconButtonStyleHelper.fillGrayTL82,
+                                                              child: CustomImageView(svgPath: ImageConstant.imgOverflowmenu))
+                                                        ])
+                                                  ]);
+                                            },
+                                          )),
                                       Align(
                                           alignment: Alignment.bottomRight,
                                           child: Container(

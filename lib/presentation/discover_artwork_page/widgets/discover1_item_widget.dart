@@ -23,7 +23,10 @@ class Discover1ItemWidget extends StatelessWidget {
         borderRadius: BorderRadiusStyle.roundedBorder8,
       ),
       child: CustomImageView(
-        imagePath: discover1ItemModelObj.image,
+        imagePath: discover1ItemModelObj.url != null && discover1ItemModelObj.url!.isNotEmpty
+            ? null
+            : discover1ItemModelObj.image,
+        url: discover1ItemModelObj.url,
         height: double.infinity,
         width: double.infinity,
         radius: BorderRadius.circular(

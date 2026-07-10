@@ -1,9 +1,6 @@
 import 'package:ai_image_generator/core/app_export.dart';
-import 'package:ai_image_generator/presentation/discover_artwork_page/discover_artwork_page.dart';
 import 'package:ai_image_generator/presentation/home_screen/home_screen.dart';
 import 'package:ai_image_generator/presentation/home_screen_one_page/home_screen_one_page.dart';
-import 'package:ai_image_generator/presentation/profile_one_page/profile_one_page.dart';
-import 'package:ai_image_generator/presentation/profile_one_tab_container_screen/profile_one_tab_container_screen.dart';
 import 'package:ai_image_generator/presentation/profile_tab_container_page/profile_tab_container_page.dart';
 import 'package:ai_image_generator/presentation/toolbox_ai_page/toolbox_ai_page.dart';
 import 'package:ai_image_generator/widgets/custom_bottom_bar.dart';
@@ -13,7 +10,6 @@ import 'package:flutter/material.dart';
 import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_outlined_button.dart';
 import '../discover_tab_container_page/discover_tab_container_page.dart';
-import '../profile_page/profile_page.dart';
 import 'controller/home_screen_one_container_controller.dart';
 
 

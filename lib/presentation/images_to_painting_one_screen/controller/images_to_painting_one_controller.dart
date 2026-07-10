@@ -1,15 +1,6 @@
-import 'dart:io';
-import 'dart:typed_data';
-import 'dart:ui' as ui;
 
 import 'package:ai_image_generator/core/app_export.dart';
-import 'package:ai_image_generator/presentation/images_to_painting_one_screen/models/images_to_painting_one_model.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:image_painter/image_painter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
 
 class ImagesToPaintingOneController extends GetxController {
  XFile? images;

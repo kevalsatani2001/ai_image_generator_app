@@ -103,14 +103,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                     child: Text("msg_forgot_password".tr,
                                         style: theme.textTheme.bodyLarge))),
                             SizedBox(height: 39.v),
-                            CustomElevatedButton(
-                                text: "lbl_login".tr,
-                                onTap: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    PrefUtils.setIsSignIn(false);
-                                    onTapLogin();
-                                  }
-                                }),
+                            Obx(() => controller.isLoading.value
+                                ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
+                                : CustomElevatedButton(
+                                    text: "lbl_login".tr,
+                                    onTap: () async {
+                                      if (_formKey.currentState!.validate()) {
+                                        bool success = await controller.login();
+                                        if (success) {
+                                          onTapLogin();
+                                        }
+                                      }
+                                    })),
                             Spacer(),
                             SizedBox(height: 8.v),
                             Align(

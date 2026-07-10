@@ -16,45 +16,72 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
   PerSonalInformationScreenController perSonalInformationScreenController = Get.put(PerSonalInformationScreenController());
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(child: Scaffold(
-      body: ColorfulSafeArea(
-        color: appTheme.whiteA700,
-        child: Column(
-          children: [
-getCommonAppBar("lbl_personal_info".tr),
-            SizedBox(height: 16.v,),
-            CustomImageView(
-              imagePath: ImageConstant.imgEllipse237104x104,
-              height: 104.adaptSize,
-              width: 104.adaptSize,
-              radius: BorderRadius.circular(
-                52.h,
-              ),
-              alignment: Alignment.center,
-            ),
-            SizedBox(height: 20.v),
-            Center(
-              child: Text("lbl_aida_bugg".tr,
-                  style: theme.textTheme.titleMedium),
-            ),
-            SizedBox(height: 3.v),
-            Center(
-              child: Text("lbl_aida_bugg2".tr,
-                  style: CustomTextStyles.bodyLargeGray700),
-            ),
-            SizedBox(height: 32.v,),
-            personalInformationOption("First Name", "John"),
-            SizedBox(height: 16.v,),
-            personalInformationOption("Last Name", "Abram"),
-            SizedBox(height: 16.v,),
-            personalInformationOption("Email Address", "johnabram@gmail.com"),
-          ],
+    return WillPopScope(
+      child: Scaffold(
+        body: ColorfulSafeArea(
+          color: appTheme.whiteA700,
+          child: GetBuilder<PerSonalInformationScreenController>(
+            init: PerSonalInformationScreenController(),
+            builder: (controller) {
+              if (controller.isLoading) {
+                return Center(
+                  child: CircularProgressIndicator(color: theme.colorScheme.primary),
+                );
+              }
+
+              String displayName = "${controller.firstName} ${controller.lastName}".trim();
+              if (displayName.isEmpty) displayName = "User Profile";
+              String username = controller.firstName.isNotEmpty 
+                  ? "@${controller.firstName.toLowerCase()}" 
+                  : "@username";
+
+              return Column(
+                children: [
+                  getCommonAppBar("lbl_personal_info".tr),
+                  SizedBox(height: 16.v),
+                  CustomImageView(
+                    imagePath: controller.profileImage.isEmpty || controller.profileImage.startsWith('assets/')
+                        ? ImageConstant.imgEllipse237104x104
+                        : null,
+                    url: controller.profileImage.isNotEmpty && !controller.profileImage.startsWith('assets/')
+                        ? controller.profileImage
+                        : null,
+                    height: 104.adaptSize,
+                    width: 104.adaptSize,
+                    radius: BorderRadius.circular(52.h),
+                    alignment: Alignment.center,
+                  ),
+                  SizedBox(height: 20.v),
+                  Center(
+                    child: Text(
+                      displayName,
+                      style: theme.textTheme.titleMedium,
+                    ),
+                  ),
+                  SizedBox(height: 3.v),
+                  Center(
+                    child: Text(
+                      username,
+                      style: CustomTextStyles.bodyLargeGray700,
+                    ),
+                  ),
+                  SizedBox(height: 32.v),
+                  personalInformationOption("First Name", controller.firstName.isNotEmpty ? controller.firstName : "N/A"),
+                  SizedBox(height: 16.v),
+                  personalInformationOption("Last Name", controller.lastName.isNotEmpty ? controller.lastName : "N/A"),
+                  SizedBox(height: 16.v),
+                  personalInformationOption("Email Address", controller.email.isNotEmpty ? controller.email : "N/A"),
+                ],
+              );
+            },
+          ),
         ),
       ),
-    ), onWillPop: ()async {
-      Get.back();
-      return true;
-    },);
+      onWillPop: () async {
+        Get.back();
+        return true;
+      },
+    );
   }
 
   personalInformationOption(title,subtitle){
