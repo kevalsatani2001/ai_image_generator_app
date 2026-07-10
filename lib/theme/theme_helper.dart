@@ -55,7 +55,7 @@ class ThemeHelper {
     return ThemeData(
       useMaterial3: true,
       bottomSheetTheme: BottomSheetThemeData(backgroundColor: appTheme.whiteA700,surfaceTintColor: appTheme.whiteA700),
-      dialogTheme: DialogTheme(backgroundColor: appTheme.white,
+      dialogTheme: DialogThemeData(backgroundColor: appTheme.white,
       surfaceTintColor: appTheme.white),
       visualDensity: VisualDensity.standard,
       colorScheme: colorScheme,

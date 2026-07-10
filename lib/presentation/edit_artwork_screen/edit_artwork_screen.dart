@@ -8,7 +8,6 @@ import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
 
 import '../art_styles_screen/controller/art_styles_controller.dart';
 import 'controller/edit_artwork_controller.dart';

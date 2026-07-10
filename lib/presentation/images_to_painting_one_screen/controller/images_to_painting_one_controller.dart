@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:image_painter/image_painter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:open_file_plus/open_file_plus.dart';
 import 'package:path_provider/path_provider.dart';
 
 class ImagesToPaintingOneController extends GetxController {
