@@ -46,7 +46,7 @@ class ProfileOneTabContainerController extends GetxController
       }
 
       // 1. Fetch user doc
-      DocumentSnapshot doc = await FirebaseFirestore.instance
+      DocumentSnapshot doc = await FirebaseFirestore.instanceFor(app: Firebase.app(), databaseId: 'ai-image-app')
           .collection('ai_app')
           .doc('image_generator')
           .collection('users')
@@ -65,7 +65,7 @@ class ProfileOneTabContainerController extends GetxController
       }
 
       // 2. Query posts count for user
-      QuerySnapshot postsSnap = await FirebaseFirestore.instance
+      QuerySnapshot postsSnap = await FirebaseFirestore.instanceFor(app: Firebase.app(), databaseId: 'ai-image-app')
           .collection('ai_app')
           .doc('image_generator')
           .collection('posts')

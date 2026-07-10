@@ -31,7 +31,7 @@ class SignUpController extends GetxController {
         String uid = userCredential.user!.uid;
         
         // Save user profile metadata to Firestore
-        await FirebaseFirestore.instance
+        await FirebaseFirestore.instanceFor(app: Firebase.app(), databaseId: 'ai-image-app')
             .collection('ai_app')
             .doc('image_generator')
             .collection('users')

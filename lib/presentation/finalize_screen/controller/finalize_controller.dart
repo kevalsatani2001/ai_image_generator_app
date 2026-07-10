@@ -49,7 +49,7 @@ class FinalizeController extends GetxController {
       String downloadUrl = await taskSnapshot.ref.getDownloadURL();
 
       // 2. Fetch current user metadata for creator details
-      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+      DocumentSnapshot userDoc = await FirebaseFirestore.instanceFor(app: Firebase.app(), databaseId: 'ai-image-app')
           .collection('ai_app')
           .doc('image_generator')
           .collection('users')
@@ -67,7 +67,7 @@ class FinalizeController extends GetxController {
       }
 
       // 3. Create post doc in Cloud Firestore
-      await FirebaseFirestore.instance
+      await FirebaseFirestore.instanceFor(app: Firebase.app(), databaseId: 'ai-image-app')
           .collection('ai_app')
           .doc('image_generator')
           .collection('posts')

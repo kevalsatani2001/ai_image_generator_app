@@ -17,3 +17,5 @@ export 'package:ai_image_generator/widgets/custom_image_view.dart';
 export 'package:get/get.dart';
 export '../theme/custom_button_style.dart';
 export 'package:ai_image_generator/core/utils/date_time_utils.dart';
+export 'package:firebase_core/firebase_core.dart';
+

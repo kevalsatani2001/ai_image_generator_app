@@ -18,7 +18,7 @@ class DiscoverArtworkController extends GetxController {
       update();
 
       // Retrieve published artworks from Firestore ordered by creation timestamp
-      QuerySnapshot postsSnapshot = await FirebaseFirestore.instance
+      QuerySnapshot postsSnapshot = await FirebaseFirestore.instanceFor(app: Firebase.app(), databaseId: 'ai-image-app')
           .collection('ai_app')
           .doc('image_generator')
           .collection('posts')

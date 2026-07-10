@@ -30,7 +30,7 @@ class ArtworkPostController extends GetxController {
       isLoading = true;
       update();
 
-      DocumentSnapshot doc = await FirebaseFirestore.instance
+      DocumentSnapshot doc = await FirebaseFirestore.instanceFor(app: Firebase.app(), databaseId: 'ai-image-app')
           .collection('ai_app')
           .doc('image_generator')
           .collection('posts')
@@ -65,7 +65,7 @@ class ArtworkPostController extends GetxController {
       isLiked = !isLiked;
       update();
 
-      DocumentReference postRef = FirebaseFirestore.instance
+      DocumentReference postRef = FirebaseFirestore.instanceFor(app: Firebase.app(), databaseId: 'ai-image-app')
           .collection('ai_app')
           .doc('image_generator')
           .collection('posts')
@@ -96,7 +96,7 @@ class ArtworkPostController extends GetxController {
       String? currentUid = FirebaseAuth.instance.currentUser?.uid;
       if (currentUid == null || docId == null) return;
 
-      await FirebaseFirestore.instance
+      await FirebaseFirestore.instanceFor(app: Firebase.app(), databaseId: 'ai-image-app')
           .collection('ai_app')
           .doc('image_generator')
           .collection('posts')

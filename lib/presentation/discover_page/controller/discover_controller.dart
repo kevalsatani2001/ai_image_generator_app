@@ -26,7 +26,7 @@ class DiscoverController extends GetxController {
       }
 
       // 1. Fetch current user data to see who they follow
-      DocumentSnapshot currentUserDoc = await FirebaseFirestore.instance
+      DocumentSnapshot currentUserDoc = await FirebaseFirestore.instanceFor(app: Firebase.app(), databaseId: 'ai-image-app')
           .collection('ai_app')
           .doc('image_generator')
           .collection('users')
@@ -40,7 +40,7 @@ class DiscoverController extends GetxController {
       }
 
       // 2. Fetch other creators
-      QuerySnapshot creatorsSnapshot = await FirebaseFirestore.instance
+      QuerySnapshot creatorsSnapshot = await FirebaseFirestore.instanceFor(app: Firebase.app(), databaseId: 'ai-image-app')
           .collection('ai_app')
           .doc('image_generator')
           .collection('users')
@@ -93,14 +93,14 @@ class DiscoverController extends GetxController {
       update();
 
       // Firestore batch update
-      WriteBatch batch = FirebaseFirestore.instance.batch();
+      WriteBatch batch = FirebaseFirestore.instanceFor(app: Firebase.app(), databaseId: 'ai-image-app').batch();
       
-      DocumentReference currentUserRef = FirebaseFirestore.instance
+      DocumentReference currentUserRef = FirebaseFirestore.instanceFor(app: Firebase.app(), databaseId: 'ai-image-app')
           .collection('ai_app')
           .doc('image_generator')
           .collection('users')
           .doc(currentUid);
-      DocumentReference targetUserRef = FirebaseFirestore.instance
+      DocumentReference targetUserRef = FirebaseFirestore.instanceFor(app: Firebase.app(), databaseId: 'ai-image-app')
           .collection('ai_app')
           .doc('image_generator')
           .collection('users')
