@@ -5,7 +5,6 @@ import 'dart:ui' as ui;
 import 'package:ai_image_generator/core/app_export.dart';
 import 'package:ai_image_generator/widgets/custom_icon_button.dart';
 import 'package:colorful_safe_area/colorful_safe_area.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 

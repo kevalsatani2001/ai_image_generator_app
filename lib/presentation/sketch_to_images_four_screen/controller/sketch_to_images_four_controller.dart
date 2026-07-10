@@ -1,5 +1,4 @@
 import 'package:ai_image_generator/core/app_export.dart';
-import 'package:ai_image_generator/presentation/sketch_to_images_four_screen/models/sketch_to_images_four_model.dart';
 import 'package:flutter/cupertino.dart';
 
 /// A controller class for the SketchToImagesFourScreen.

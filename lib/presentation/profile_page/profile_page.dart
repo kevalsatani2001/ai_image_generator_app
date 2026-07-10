@@ -1,10 +1,7 @@
-import 'package:colorful_safe_area/colorful_safe_area.dart';
 
 import '../art_styles_screen/models/artstyle_item_model.dart';
 import '../profile_page/widgets/profile_item_widget.dart';
 import 'controller/profile_controller.dart';
-import 'models/profile_item_model.dart';
-import 'models/profile_model.dart';
 import 'package:ai_image_generator/core/app_export.dart';
 import 'package:flutter/material.dart';
 

@@ -69,7 +69,7 @@ class _EditSevenScreenState extends State<EditSevenScreen> {
                                                       image: FileImage(File(recolourImageController.images!.path)),
                                                       fit: BoxFit.fill,
                                                       colorFilter: ColorFilter.mode(
-                                                          color!.withOpacity(0.5),
+                                                          color.withOpacity(0.5),
                                                           BlendMode.color))),
 
                                             );

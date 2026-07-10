@@ -2,7 +2,6 @@ import 'package:ai_image_generator/core/app_export.dart';
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 
-import '../social_media_screen/widgets/header_item_widget.dart';
 import 'controller/social_media_controller.dart';
 import 'models/header_item_model.dart';
 

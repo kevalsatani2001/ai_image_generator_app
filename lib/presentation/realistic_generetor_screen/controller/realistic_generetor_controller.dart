@@ -1,5 +1,4 @@
 import 'package:ai_image_generator/core/app_export.dart';
-import 'package:ai_image_generator/presentation/realistic_generetor_screen/models/realistic_generetor_model.dart';
 import 'package:image_picker/image_picker.dart';
 
 /// A controller class for the RealisticGeneretorScreen.

@@ -1,12 +1,9 @@
 import 'package:ai_image_generator/core/app_export.dart';
-import 'package:ai_image_generator/presentation/ai_avtar_generator_one_screen/ai_avtar_generator_one_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../art_styles_screen/models/artstyle_item_model.dart';
 import '../toolbox_ai_page/widgets/artstyle2_item_widget.dart';
 import 'controller/toolbox_ai_controller.dart';
-import 'models/artstyle2_item_model.dart';
-import 'models/toolbox_ai_model.dart';
 
 // ignore_for_file: must_be_immutable
 class ToolboxAiPage extends StatefulWidget {

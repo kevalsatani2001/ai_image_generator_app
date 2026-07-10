@@ -1,7 +1,5 @@
 import '../controller/social_media_controller.dart';
-import '../models/appbar_item_model.dart';
 import '../models/header_item_model.dart';
-import '../widgets/appbar_item_widget.dart';
 import 'package:ai_image_generator/core/app_export.dart';
 import 'package:ai_image_generator/widgets/app_bar/appbar_button_17.dart';
 import 'package:ai_image_generator/widgets/app_bar/custom_app_bar.dart';

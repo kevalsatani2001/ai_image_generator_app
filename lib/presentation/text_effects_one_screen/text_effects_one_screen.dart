@@ -1,10 +1,7 @@
 import 'package:ai_image_generator/core/app_export.dart';
-import 'package:ai_image_generator/widgets/app_bar/appbar_button_1.dart';
-import 'package:ai_image_generator/widgets/app_bar/custom_app_bar.dart';
 import 'package:ai_image_generator/widgets/custom_elevated_button.dart';
 import 'package:ai_image_generator/widgets/custom_search_view.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import '../text_effects_one_screen/widgets/grida_one_item_widget.dart';
 import 'controller/text_effects_one_controller.dart';
@@ -94,7 +91,7 @@ class _TextEffectsOneScreenState extends State<TextEffectsOneScreen> {
                           child: CustomElevatedButton(
                               width: double.infinity,
                               text: "lbl_create".tr,
-                              onTap: controller.curretTextEffextID == 0 || controller.curretTextEffextID == null?(){
+                              onTap: controller.curretTextEffextID == 0?(){
                                 getCustomToast("Please select any Text effect");
                               }:() {
                                 onTapCreate();

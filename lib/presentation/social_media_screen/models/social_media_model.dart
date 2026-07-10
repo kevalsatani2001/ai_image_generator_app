@@ -1,5 +1,4 @@
 import '../../../core/app_export.dart';
-import 'appbar_item_model.dart';
 import 'header_item_model.dart';
 
 /// This class defines the variables used in the [social_media_screen],

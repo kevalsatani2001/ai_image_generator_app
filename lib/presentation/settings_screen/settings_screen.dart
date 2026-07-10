@@ -1,9 +1,5 @@
 import 'package:ai_image_generator/core/app_export.dart';
 import 'package:ai_image_generator/presentation/log_out_popup_screen/log_out_popup_screen.dart';
-import 'package:ai_image_generator/widgets/app_bar/appbar_image_1.dart';
-import 'package:ai_image_generator/widgets/app_bar/appbar_title.dart';
-import 'package:ai_image_generator/widgets/app_bar/custom_app_bar.dart';
-import 'package:ai_image_generator/widgets/custom_checkbox_button.dart';
 import 'package:ai_image_generator/widgets/custom_icon_button.dart';
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';

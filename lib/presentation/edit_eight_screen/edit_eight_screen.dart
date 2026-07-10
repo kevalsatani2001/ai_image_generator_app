@@ -55,7 +55,7 @@ class _EditEightScreenState extends State<EditEightScreen> {
                                     height: extendImagesController.imageHeight.v,
                                       width: extendImagesController.imageWidth.h,
                                       decoration:BoxDecoration(borderRadius: BorderRadius.circular(8.h),
-                                      image: DecorationImage(image: FileImage(File(extendImagesController.images!.path!),),fit: BoxFit.cover))
+                                      image: DecorationImage(image: FileImage(File(extendImagesController.images!.path),),fit: BoxFit.cover))
                                      ),
                               ),
                                   SizedBox(height: 28.v),

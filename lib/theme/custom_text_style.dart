@@ -209,11 +209,6 @@ extension on TextStyle {
     );
   }
 
-  TextStyle get urbanist {
-    return copyWith(
-      fontFamily: 'Urbanist',
-    );
-  }
 
   TextStyle get oswald {
     return copyWith(

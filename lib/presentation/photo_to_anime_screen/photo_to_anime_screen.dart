@@ -22,7 +22,6 @@ class _PhotoToAnimeScreenState extends State<PhotoToAnimeScreen> {
   PhotoToAnimeController controller = Get.put(PhotoToAnimeController());
   EditController editControllers = Get.put(EditController());
   // Uint8List? bdata;
-  final GlobalKey _globalKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);

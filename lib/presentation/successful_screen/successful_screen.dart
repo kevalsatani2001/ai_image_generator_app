@@ -3,7 +3,6 @@ import 'package:ai_image_generator/widgets/custom_elevated_button.dart';
 import 'package:ai_image_generator/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 
-import 'controller/successful_controller.dart';
 
 
 

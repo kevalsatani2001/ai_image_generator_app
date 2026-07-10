@@ -1,5 +1,4 @@
 import 'package:ai_image_generator/core/app_export.dart';
-import 'package:ai_image_generator/presentation/verification_screen/models/verification_model.dart';
 import 'package:flutter/material.dart';
 
 /// A controller class for the VerificationScreen.

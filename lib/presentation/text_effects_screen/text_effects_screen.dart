@@ -5,7 +5,6 @@ import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 
 import '../text_effects_one_screen/controller/text_effects_one_controller.dart';
-import 'controller/text_effects_controller.dart';
 
 
 class TextEffectsScreen extends StatefulWidget {

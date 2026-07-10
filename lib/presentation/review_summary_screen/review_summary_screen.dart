@@ -1,7 +1,5 @@
 import 'package:ai_image_generator/core/app_export.dart';
 import 'package:ai_image_generator/presentation/welcome_to_pro_plan_popup_screen/welcome_to_pro_plan_popup_screen.dart';
-import 'package:ai_image_generator/widgets/app_bar/appbar_button_9.dart';
-import 'package:ai_image_generator/widgets/app_bar/custom_app_bar.dart';
 import 'package:ai_image_generator/widgets/custom_elevated_button.dart';
 import 'package:ai_image_generator/widgets/custom_icon_button.dart';
 import 'package:ai_image_generator/widgets/custom_outlined_button.dart';

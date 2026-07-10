@@ -569,15 +569,6 @@ class _EditScreenState extends State<EditScreen> {
   ];
   final _filterColor = ValueNotifier<Color>(Colors.white);
 
-  void _onFilterChanged(Color value) {
-    //MaterialColor(primary value: Color(0xfff44336))
-    setState(() {
-      color1st = value.toString().split('(').last.toString().toLowerCase();
-      color2nd = color1st.toString().split(')').first.toString().toUpperCase();
-    });
-    print("color value is =========== ${color2nd}");
-    _filterColor.value = value;
-  }
 
 //  Future<void> _captureAndSaveImage() async {
 //    RenderRepaintBoundary boundary = _globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
